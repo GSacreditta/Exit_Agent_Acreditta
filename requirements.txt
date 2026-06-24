@@ -1,0 +1,20 @@
+# Core
+anthropic>=0.40.0
+parallel-web>=0.5.0
+google-search-results>=2.4.2
+pyyaml>=6.0
+jsonschema>=4.0
+python-dotenv>=1.0
+requests>=2.31
+
+# Database
+sqlalchemy>=2.0
+psycopg[binary]>=3.1
+alembic>=1.13
+cloud-sql-python-connector[pg8000]>=1.10
+
+# Slack (bot token API, not webhook)
+slack-sdk>=3.27
+
+# GCP
+google-cloud-secret-manager>=2.20

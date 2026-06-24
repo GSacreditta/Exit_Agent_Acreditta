@@ -1,0 +1,41 @@
+name: Deploy Monitor
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'monitor/**'
+      - 'shared/**'
+      - 'config/**'
+      - 'knowledge/**'
+      - 'migrations/**'
+      - 'Dockerfile.monitor'
+      - 'requirements.txt'
+      - 'scripts/deploy-monitor.sh'
+  workflow_dispatch:
+
+env:
+  GCP_PROJECT_ID: exiti-agent-acreditta
+  GCP_REGION: us-central1
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write  # for Workload Identity Federation
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Authenticate to GCP
+        uses: google-github-actions/auth@v2
+        with:
+          # Either WIF (preferred) or a service-account JSON key in secrets.
+          # Configure one of these. For WIF setup, see DEPLOY.md.
+          workload_identity_provider: ${{ secrets.WIF_PROVIDER }}
+          service_account: ${{ secrets.WIF_SERVICE_ACCOUNT }}
+
+      - uses: google-github-actions/setup-gcloud@v2
+
+      - name: Deploy Monitor
+        run: ./scripts/deploy-monitor.sh

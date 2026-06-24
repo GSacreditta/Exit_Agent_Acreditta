@@ -1,0 +1,14 @@
+.venv/
+.env
+__pycache__/
+*.pyc
+*.egg-info/
+.DS_Store
+
+# Local-only
+data/
+*.log
+
+# Build artifacts
+build/
+dist/

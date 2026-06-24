@@ -1,0 +1,25 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# System deps minimal — psycopg/pg8000 are pure-Python paths
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements.txt /app/
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy shared first so Docker layer caches it independently
+COPY shared/ /app/shared/
+COPY knowledge/ /app/knowledge/
+COPY config/ /app/config/
+COPY migrations/ /app/migrations/
+COPY alembic.ini /app/
+
+# Then the Monitor-specific code
+COPY monitor/ /app/monitor/
+
+RUN chmod +x /app/monitor/entrypoint.sh
+
+ENTRYPOINT ["/app/monitor/entrypoint.sh"]

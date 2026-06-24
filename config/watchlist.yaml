@@ -1,0 +1,86 @@
+# Acreditta M&A Watchlist — synced into the `companies` table on each deploy.
+# Three tiers:
+#   tier_1 — direct strategic buyer universe (any news matters)
+#   tier_2 — LATAM EdTech players who could become buyers, partners, or signal consolidation
+#   tier_3 — category keywords (no company name needed)
+
+tier_1_buyers:
+  - name: "Instructure"
+    aliases: ["Canvas LMS", "Parchment", "Canvas Badges", "Badgr"]
+  - name: "KKR"
+    aliases: ["KKR education", "KKR EdTech"]
+  - name: "Pearson"
+    aliases: ["Credly", "Pearson VUE", "Pearson Enterprise Learning"]
+  - name: "Anthology"
+    aliases: ["Blackboard"]
+  - name: "Accredible"
+    aliases: []
+  - name: "Docebo"
+    aliases: ["365Talents"]
+  - name: "Cornerstone OnDemand"
+    aliases: ["Cornerstone Galaxy", "SkyHive", "Talespin", "Clearlake Capital education"]
+  - name: "Degreed"
+    aliases: ["Learn In Degreed"]
+  - name: "Cogna"
+    aliases: ["Cogna Educação", "Vasta Platform", "Kroton"]
+  - name: "Arco Educação"
+    aliases: ["Arco Educacao", "General Atlantic Arco", "Dragoneer Arco"]
+  - name: "YDUQS"
+    aliases: ["Estácio", "Estacio"]
+  - name: "Santillana"
+    aliases: ["PRISA Santillana", "Compartir Santillana", "UNOi"]
+  - name: "Coursera"
+    aliases: ["Coursera Udemy merger"]
+  - name: "Udemy"
+    aliases: ["Udemy Coursera merger"]
+  - name: "Go1"
+    aliases: []
+  - name: "Sanoma"
+    aliases: ["Sanoma Learning"]
+
+tier_2_latam_edtech:
+  - name: "Crehana"
+    aliases: ["Crehana Talisis"]
+  - name: "Talisis"
+    aliases: ["Talisis Crehana"]
+  - name: "Platzi"
+    aliases: []
+  - name: "Ubits"
+    aliases: []
+  - name: "Digital House"
+    aliases: ["Digital House Globant"]
+  - name: "uPlanner"
+    aliases: []
+  - name: "Territorium"
+    aliases: []
+  - name: "POK"
+    aliases: ["POK credentials Argentina", "POK badges"]
+  - name: "Eidos Global"
+    aliases: []
+  - name: "Laboratoria"
+    aliases: []
+  - name: "Slang"
+    aliases: ["Slang language LATAM"]
+
+tier_3_category_keywords:
+  - "digital credentials acquisition"
+  - "micro-credentials LATAM"
+  - "credenciales digitales adquisición"
+  - "EdTech M&A LATAM"
+  - "EdTech adquisición Latinoamérica"
+  - "Open Badges acquisition"
+  - "skills intelligence acquisition"
+  - "verifiable credentials EdTech"
+  - "universidad credenciales digitales"
+  - "LMS acquisition Latin America"
+
+settings:
+  lookback_hours: 24
+  query_variants:
+    - "{name} acquisition"
+    - "{name} acquires"
+    - "{name} adquiere"
+    - "{name} merger"
+    - "{name} funding round"
+    - "{name} ronda de inversión"
+  languages: ["es", "en", "pt"]

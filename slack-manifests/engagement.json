@@ -1,0 +1,49 @@
+{
+  "_comment": "Phase 3 — REPLACE the REPLACE_ME hostnames with the Cloud Run service URL after deploying engagement/.",
+  "display_information": {
+    "name": "Acreditta Engagement",
+    "description": "Outreach opportunity tracker for Acreditta's exit process",
+    "background_color": "#3a8c5a"
+  },
+  "features": {
+    "bot_user": {
+      "display_name": "Acreditta Engagement",
+      "always_online": false
+    },
+    "slash_commands": [
+      {
+        "command": "/engaged",
+        "url": "https://REPLACE_ME-engagement.run.app/slack/commands",
+        "description": "Mark an engagement opportunity as contacted",
+        "usage_hint": "[note]",
+        "should_escape": false
+      },
+      {
+        "command": "/snooze",
+        "url": "https://REPLACE_ME-engagement.run.app/slack/commands",
+        "description": "Snooze an opportunity for N days",
+        "usage_hint": "[days] [reason]",
+        "should_escape": false
+      }
+    ]
+  },
+  "oauth_config": {
+    "scopes": {
+      "bot": [
+        "chat:write",
+        "chat:write.public",
+        "commands",
+        "channels:read"
+      ]
+    }
+  },
+  "settings": {
+    "interactivity": {
+      "is_enabled": true,
+      "request_url": "https://REPLACE_ME-engagement.run.app/slack/interactivity"
+    },
+    "org_deploy_enabled": false,
+    "socket_mode_enabled": false,
+    "token_rotation_enabled": false
+  }
+}
