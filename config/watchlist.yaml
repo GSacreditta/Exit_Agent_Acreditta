@@ -75,12 +75,10 @@ tier_3_category_keywords:
   - "LMS acquisition Latin America"
 
 settings:
-  lookback_hours: 24
-  query_variants:
-    - "{name} acquisition"
-    - "{name} acquires"
-    - "{name} adquiere"
-    - "{name} merger"
-    - "{name} funding round"
-    - "{name} ronda de inversión"
-  languages: ["es", "en", "pt"]
+  lookback_hours: 168          # 7 days — weekly run
+  lookback_hours_pt: 360       # 15 days — biweekly pt run
+  query_variants_en: "{name} acquisition OR merger OR funding OR acquires OR buys OR takeover OR deal"
+  query_variants_es: "{name} adquisición OR fusión OR inversión OR adquiere OR compra OR acuerdo OR alianza"
+  query_variants_pt: "{name} aquisição OR fusão OR investimento OR adquire OR compra OR acordo OR aliança"
+  languages: ["en", "es"]
+  languages_pt: ["pt"]

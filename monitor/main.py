@@ -21,7 +21,7 @@ from .report import append_report
 from .slack import notify
 
 
-def run(dry_run: bool = False, max_queries: int | None = None) -> int:
+def run(dry_run: bool = False, max_queries: int | None = None, lang_override: list[str] | None = None) -> int:
     cfg = load_config()
     missing = [k for k, v in {
         "SERPAPI_KEY": cfg.serpapi_key,
@@ -38,7 +38,7 @@ def run(dry_run: bool = False, max_queries: int | None = None) -> int:
     t0 = time.time()
 
     # 1-3. Fetch
-    articles = fetch_all(cfg, max_queries=max_queries, verbose=True)
+    articles = fetch_all(cfg, max_queries=max_queries, verbose=True, lang_override=lang_override)
     if not articles:
         return 0
 
@@ -101,8 +101,9 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--max-queries", type=int, default=None)
+    parser.add_argument("--lang", nargs="+", default=None, help="Override languages, e.g. --lang pt")
     args = parser.parse_args()
-    return run(dry_run=args.dry_run, max_queries=args.max_queries)
+    return run(dry_run=args.dry_run, max_queries=args.max_queries, lang_override=args.lang)
 
 
 if __name__ == "__main__":

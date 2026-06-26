@@ -91,7 +91,9 @@ def classify(
             payload = json.loads(text)
             if is_valid(payload):
                 return payload
-        except Exception:
+            print(f"[classify] schema validation failed for '{article.title[:60]}': {text[:200]}")
+        except Exception as e:
+            print(f"[classify] error on '{article.title[:60]}' (attempt {attempt}): {e}")
             if attempt == 2:
                 return None
             continue

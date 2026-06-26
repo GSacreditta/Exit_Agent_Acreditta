@@ -17,7 +17,6 @@ EXTRACTION_SCHEMA = {
             "items": {
                 "type": "object",
                 "required": ["name", "role"],
-                "additionalProperties": False,
                 "properties": {
                     "name": {"type": "string"},
                     "role": {"type": "string", "enum": ["acquirer", "target", "investor", "advisor", "partner", "other"]},
@@ -29,7 +28,6 @@ EXTRACTION_SCHEMA = {
             "items": {
                 "type": "object",
                 "required": ["name"],
-                "additionalProperties": False,
                 "properties": {
                     "name": {"type": "string"},
                     "position": {"type": "string"},
@@ -43,7 +41,7 @@ EXTRACTION_SCHEMA = {
             "type": "string",
             "enum": ["credentials", "LMS", "skills", "LATAM_edtech", "corporate_learning", "other"],
         },
-        "why_it_matters": {"type": "string"},
+        "why_it_matters": {"type": ["string", "null"]},
     },
 }
 

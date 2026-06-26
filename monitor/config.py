@@ -35,8 +35,12 @@ class Config:
     tier_1: list[Company]
     tier_2: list[Company]
     tier_3_keywords: list[str]
-    query_variants: list[str]
+    query_variant_en: str
+    query_variant_es: str
+    query_variant_pt: str
     languages: list[str]
+    languages_pt: list[str]
+    lookback_hours_pt: int
 
 
 def load_config() -> Config:
@@ -59,6 +63,10 @@ def load_config() -> Config:
         tier_1=tier_1,
         tier_2=tier_2,
         tier_3_keywords=wl["tier_3_category_keywords"],
-        query_variants=wl["settings"]["query_variants"],
+        query_variant_en=wl["settings"]["query_variants_en"],
+        query_variant_es=wl["settings"]["query_variants_es"],
+        query_variant_pt=wl["settings"]["query_variants_pt"],
         languages=wl["settings"]["languages"],
+        languages_pt=wl["settings"].get("languages_pt", ["pt"]),
+        lookback_hours_pt=int(wl["settings"].get("lookback_hours_pt", 360)),
     )
